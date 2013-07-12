@@ -1,0 +1,19 @@
+<h3>Sign Up</h3>
+
+<form id="signup-form" class="form-horizontal">
+  <fieldset>
+
+    {{input 'signup' 'username' 'text' 'Username' username}}
+
+    {{input 'signup' 'email' 'text' 'Email' email}}
+
+    {{input 'signup' 'password_confirmation' 'password' 'Password' null}}
+
+    {{input 'signup' 'password_confirmation' 'password' 'Confirm Password' null}}
+
+  </fieldset>
+
+  <fieldset class="form-actions">
+    <button type="submit" class="btn btn-primary">Sign up</button>
+  </fieldset>
+</form>

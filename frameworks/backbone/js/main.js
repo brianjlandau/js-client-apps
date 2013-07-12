@@ -11,6 +11,11 @@ requirejs.config({
     text: 'vendor/text',
     hbars: 'vendor/hbars',
 
+    // lib paths
+    serialize_object: 'lib/jquery.serialize_object',
+    session: 'lib/session',
+    form_view: 'lib/form_view',
+
     // Backbone Paths
     collections: 'app/collections',
     models: 'app/models',
@@ -36,6 +41,9 @@ requirejs.config({
     },
     bootstrap: {
       deps: ['jquery']
+    },
+    serialize_object: {
+      deps: ['jquery']
     }
   },
 
@@ -45,8 +53,24 @@ requirejs.config({
 
 });
 
-require(['bootstrap', 'backbone'], function() {
+require(['bootstrap', 'backbone', 'serialize_object'], function() {
 
-  console.log("BOOTED");
+  require(['session', 'routers/app'], function(Session, App){
+    window.currentSession = Session;
+
+    $.ajaxPrefilter(function( options, originalOptions, xhr ){
+      if (currentSession.isLoggedIn()){
+        options.headers = {'X-User-Token': currentSession.currentUserToken()};
+      }
+    });
+
+    currentSession.fetchCurrentAccount(function(){
+      window.app = new App();
+
+      Backbone.history.start();
+
+      console.log("BOOTED");
+    });
+  });
 
 });

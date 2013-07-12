@@ -1,0 +1,30 @@
+<div class="navbar-inner">
+  <a class="brand" href="#">Hacker News</a>
+  <ul class="nav pull-right">
+    {{#isLoggedIn}}
+      <li class="dropdown account-tab">
+        <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{username}}</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li>
+            <a href="#account" class="account-info">Account Info</a>
+          </li>
+          <li>
+            <a href="#edit_account" class="update-account">Update Account</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+       <a href="#logout" class="logout">Logout</a> 
+      </li>
+    {{/isLoggedIn}}
+
+    {{^isLoggedIn}}
+      <li>
+        <a href="#login" class="login">Login</a>
+      </li>
+      <li>
+        <a href="#sign_up" class="sign-up">Sign Up</a>
+      </li>
+    {{/isLoggedIn}}
+  </ul>
+</div>

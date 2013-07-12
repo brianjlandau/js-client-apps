@@ -1,0 +1,19 @@
+<h3>Edit Account</h3>
+
+<form id="account-form" class="form-horizontal">
+  <fieldset>
+
+    {{input 'account' 'username' 'text' 'Username' username}}
+
+    {{input 'account' 'email' 'text' 'Email' email}}
+
+    {{input 'account' 'password_confirmation' 'password' 'Password' null}}
+
+    {{input 'account' 'password_confirmation' 'password' 'Confirm Password' null}}
+
+  </fieldset>
+
+  <fieldset class="form-actions">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </fieldset>
+</form>
