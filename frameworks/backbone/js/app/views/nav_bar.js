@@ -8,7 +8,11 @@ define(["hbars!templates/nav_bar"], function(template){
 
     events: {
       'click a.logout': 'logout',
-      'mouseover a.username': 'dropdownAccountMenu'
+      'mouseover a.username': 'dropdownAccountMenu',
+      'click a#new-article': 'newArticle',
+      'click a#edit-account': 'editAccount',
+      'click a#sign-up': 'signUp',
+      'click a#login': 'login'
     },
 
     initialize: function(){
@@ -39,6 +43,38 @@ define(["hbars!templates/nav_bar"], function(template){
 
     listenToAccount: function(){
       this.listenTo(currentSession.currentAccount, 'change:username', this.render);
+    },
+
+    newArticle: function(e){
+      e.preventDefault();
+      require(["models/article","views/article_form"], function(Article, ArticleForm){
+        var article = new Article,
+            articleForm = new ArticleForm({model: article});
+      });
+    },
+
+    editAccount: function(e){
+      e.preventDefault();
+      require(["views/account_form"], function(AccountForm){
+        var account = currentSession.currentAccount,
+            accountForm = new AccountForm({model: account});
+      });
+    },
+
+    signUp: function(e){
+      e.preventDefault();
+      require(["views/signup_form", "models/user"], function(UserForm, User){
+        var user = new User,
+            userForm = new UserForm({model: user});
+      });
+    },
+
+    login: function(e){
+      e.preventDefault();
+      require(["views/login_form", "models/session"], function(LoginForm, Session){
+        var session = new Session,
+            loginForm = new LoginForm({model: session});
+      });
     }
   });
 

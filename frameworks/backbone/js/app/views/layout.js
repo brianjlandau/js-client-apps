@@ -12,7 +12,7 @@ define(["views/nav_bar", "views/notification_bar"], function(NavBar, Notificatio
     render: function(){
       this.$el.append(this.navbar.el);
       this.$el.append(this.notificationBar.el);
-      this.$el.append('<div class="container" id="content"></div>');
+      this.$el.append('<div id="content"></div>');
     },
 
     setContent: function(view){

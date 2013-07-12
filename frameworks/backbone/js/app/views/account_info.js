@@ -7,6 +7,7 @@ define(["hbars!templates/account_info"], function(template){
     id: "account-info",
 
     initialize: function(){
+      this.listenTo(this.model, 'change', this.render);
       this.render();
     },
 

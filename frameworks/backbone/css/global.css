@@ -1,3 +1,12 @@
 #content {
-  padding: 20px 0px;
+  padding: 30px 5%;
+}
+
+.modal {
+  width: 800px;
+  margin-left: -400px;
+}
+
+.modal form {
+  margin-bottom: 0px;
 }

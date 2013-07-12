@@ -2,6 +2,8 @@ define(['helpers/input_helper'], function(){
   var FormView = Backbone.View.extend({
     tagName: "div",
 
+    className: "modal",
+
     events: {
       "submit form": "submit"
     },
@@ -11,10 +13,13 @@ define(['helpers/input_helper'], function(){
     initialize: function(){
       this.render();
       this.listenTo(this.model, "error", this.handleErrors);
+      this.$el.on('hidden', function () {
+        this.remove();
+      }.bind(this))
     },
 
     render: function(){
-      this.$el.html( this.template(this.templateVariables()) );
+      this.$el.html( this.template(this.templateVariables()) ).modal();
     },
 
     templateVariables: function(){
@@ -60,6 +65,12 @@ define(['helpers/input_helper'], function(){
         $input.closest(".control-group").addClass('error');
         $input.closest('.controls').append("<span class='help-inline'>"+errors.join(', ')+"</span>");
       });
+    },
+
+    closeAndNotifyOfSuccess: function(text){
+      this.$el.modal('hide');
+      Backbone.trigger("notify", text, "success");
+      this.remove();
     }
   });
 

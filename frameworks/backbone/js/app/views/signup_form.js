@@ -2,8 +2,6 @@ define(["form_view", "models/session", "hbars!templates/signup_form"], function(
   var SignupForm = FormView.extend({
     template: template,
 
-    className: "user-signup",
-
     idNameBase: "signup",
 
     success: function(model, xhr, options){
@@ -18,10 +16,8 @@ define(["form_view", "models/session", "hbars!templates/signup_form"], function(
     },
 
     loginAndRedirect: function(model, xhr, options){
-      currentSession.login(model.token);
-      app.navigate('', {trigger: true});
-      Backbone.trigger("notify", "You have created an acount and are now logged in!", "success")
-      this.remove();
+      currentSession.login(model.get('token'));
+      this.closeAndNotifyOfSuccess("You have created an acount and are now logged in!");
     }
   });
 

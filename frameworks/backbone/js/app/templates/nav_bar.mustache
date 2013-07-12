@@ -3,16 +3,16 @@
   <ul class="nav pull-right">
     {{#isLoggedIn}}
       <li>
-        <a href="#new_article">Add a Post</a> 
+        <a href="#new_article" id="new-article">Add a Post</a>
       </li>
       <li class="dropdown account-tab">
-        <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{username}}</a>
+        <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{username}} <i class="icon-chevron-down icon-white"></i></a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li>
-            <a href="#account" class="account-info">Account Info</a>
+            <a href="#account">Account Info</a>
           </li>
           <li>
-            <a href="#edit_account" class="update-account">Update Account</a>
+            <a href="#edit_account" id="edit-account">Update Account</a>
           </li>
         </ul>
       </li>
@@ -23,10 +23,10 @@
 
     {{^isLoggedIn}}
       <li>
-        <a href="#login" class="login">Login</a>
+        <a href="#login" id="login">Login</a>
       </li>
       <li>
-        <a href="#sign_up" class="sign-up">Sign Up</a>
+        <a href="#sign_up" id="sign-up">Sign Up</a>
       </li>
     {{/isLoggedIn}}
   </ul>

@@ -11,10 +11,14 @@ define(['uri'], function(URI){
       return uri.hostname;
     },
 
-    toJSON: function(options) {
-      return _.extend(_.clone(this.attributes), {
-        host: this.host()
-      });;
+    toJSON: function(options){
+      if (options){
+        return _.clone(this.attributes);
+      } else {
+        return _.extend(_.clone(this.attributes), {
+          host: this.host()
+        });;
+      }
     },
   });
 
