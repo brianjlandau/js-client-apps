@@ -60,8 +60,11 @@ requirejs.config({
 
 require(['bootstrap', 'backbone', 'serialize_object'], function() {
 
-  require(['session', 'routers/app'], function(Session, App){
+  require(['session', 'routers/app', 'collections/articles'], function(Session, App, Articles){
     window.currentSession = Session;
+
+    window.articles = new Articles;
+    articles.fetch();
 
     $.ajaxPrefilter(function( options, originalOptions, xhr ){
       if (currentSession.isLoggedIn()){

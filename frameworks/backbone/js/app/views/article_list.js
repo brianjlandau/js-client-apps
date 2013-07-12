@@ -9,6 +9,7 @@ define(["hbars!templates/article_list", "timeago"], function(template){
 
     initialize: function(){
       this.render();
+      this.listenTo(this.collection, 'add', this.render);
     },
 
     render: function(){

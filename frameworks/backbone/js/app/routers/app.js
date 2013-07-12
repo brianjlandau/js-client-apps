@@ -5,13 +5,6 @@ define(function(){
       "account": "showAccountInfo"
     },
 
-    index: function(){
-      this.renderLayout(function(){
-        $('#content').empty();
-        console.log("INDEX");
-      }.bind(this));
-    },
-
     renderLayout: function(callback){
       if (!this.layout){
         require(['views/layout'], function(Layout){
@@ -30,13 +23,8 @@ define(function(){
       requirements: ["views/article_list", "collections/articles"],
       action: function(ArticleList, Articles){
         console.log("ARTICLES LIST");
-        var articles = new Articles, articleList;
-        articles.fetch({
-          success: function(collection){
-            articleList = new ArticleList({collection: collection});
-            this.layout.setContent(articleList);
-          }.bind(this)
-        });
+        var articleList = new ArticleList({collection: articles});
+        this.layout.setContent(articleList);
       }
     },
     {

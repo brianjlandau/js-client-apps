@@ -5,6 +5,7 @@ define(["form_view", "hbars!templates/article_form"], function(FormView, templat
     idNameBase: 'article',
 
     success: function(model, xhr, option){
+      articles.add(model);
       this.closeAndNotifyOfSuccess("Your article has been saved.");
     }
   });
