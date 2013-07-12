@@ -1,10 +1,13 @@
 <div class="navbar-inner">
   <a class="brand" href="#">Hacker News</a>
-  <ul class="nav pull-right">
-    {{#isLoggedIn}}
+  {{#isLoggedIn}}
+    <ul class="nav pull-left">
       <li>
         <a href="#new_article" id="new-article">Add a Post</a>
       </li>
+    </ul>
+
+    <ul class="nav pull-right">
       <li class="dropdown account-tab">
         <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{username}} <i class="icon-chevron-down icon-white"></i></a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -19,15 +22,17 @@
       <li>
        <a href="#logout" class="logout">Logout</a> 
       </li>
-    {{/isLoggedIn}}
+    </ul>
+  {{/isLoggedIn}}
 
-    {{^isLoggedIn}}
+  {{^isLoggedIn}}
+    <ul class="nav pull-right">
       <li>
         <a href="#login" id="login">Login</a>
       </li>
       <li>
         <a href="#sign_up" id="sign-up">Sign Up</a>
       </li>
-    {{/isLoggedIn}}
-  </ul>
+    </ul>
+  {{/isLoggedIn}}
 </div>
