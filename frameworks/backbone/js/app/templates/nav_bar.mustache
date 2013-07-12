@@ -2,6 +2,9 @@
   <a class="brand" href="#">Hacker News</a>
   <ul class="nav pull-right">
     {{#isLoggedIn}}
+      <li>
+        <a href="#new_article">Add a Post</a> 
+      </li>
       <li class="dropdown account-tab">
         <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{username}}</a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">

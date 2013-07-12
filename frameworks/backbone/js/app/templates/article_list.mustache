@@ -1,0 +1,9 @@
+<ol>
+  {{#articles}}
+    <li>
+      <a href="{{url}}">{{title}}</a>
+      <span class="muted">({{host}})</span> -
+      <small><em>posted <time class="timeago" datetime="{{created_at}}">{{created_at}}</time></em></small>
+    </li>
+  {{/articles}}
+</ol>

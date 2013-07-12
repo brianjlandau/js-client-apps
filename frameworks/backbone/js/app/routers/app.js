@@ -1,11 +1,12 @@
 define(function(){
   var App = Backbone.Router.extend({
     routes: {
-      "":        'index',
+      "":        'articleList',
       "sign_up": "sign_up",
       "login":   "login",
       "account": "showAccountInfo",
-      "edit_account": "editAccount"
+      "edit_account": "editAccount",
+      'new_article': "newArticle"
     },
 
     index: function(){
@@ -28,6 +29,20 @@ define(function(){
   });
 
   var actions = [
+    {
+      name: "articleList",
+      requirements: ["views/article_list", "collections/articles"],
+      action: function(ArticleList, Articles){
+        console.log("ARTICLES LIST");
+        var articles = new Articles, articleList;
+        articles.fetch({
+          success: function(collection){
+            articleList = new ArticleList({collection: collection});
+            this.layout.setContent(articleList);
+          }.bind(this)
+        });
+      }
+    },
     {
       name: "sign_up",
       requirements: ["views/signup_form", "models/user"],
@@ -66,6 +81,16 @@ define(function(){
         var account = currentSession.currentAccount,
             accountForm = new AccountForm({model: account});
         this.layout.setContent(accountForm);
+      }
+    },
+    {
+      name: "newArticle",
+      requirements: ["models/article","views/article_form"], 
+      action: function(Article, ArticleForm){
+        console.log("CREATE ARTICLE");
+        var article = new Article,
+            articleForm = new ArticleForm({model: article});
+        this.layout.setContent(articleForm);
       }
     }
   ]
