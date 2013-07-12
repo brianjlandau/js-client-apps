@@ -2,17 +2,17 @@ define(["hbars!templates/nav_bar"], function(template){
   var NavBar = Backbone.View.extend({
     template: template,
 
-    tagName: "div",
+    tagName:   "div",
     className: "navbar navbar-inverse navbar-static-top",
-    id: "main-nav-bar",
+    id:        "main-nav-bar",
 
     events: {
-      'click a.logout': 'logout',
+      'click a.logout':       'logout',
       'mouseover a.username': 'dropdownAccountMenu',
-      'click a#new-article': 'newArticle',
+      'click a#new-article':  'newArticle',
       'click a#edit-account': 'editAccount',
-      'click a#sign-up': 'signUp',
-      'click a#login': 'login'
+      'click a#sign-up':      'signUp',
+      'click a#login':        'login'
     },
 
     initialize: function(){

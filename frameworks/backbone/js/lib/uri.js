@@ -3,6 +3,7 @@ define(function(){
       URI = function(uriString){
         var parser = document.createElement('a');
         parser.href = uriString;
+
         _.each(methods, function(method){
           this[method] = parser[method];
         }.bind(this));

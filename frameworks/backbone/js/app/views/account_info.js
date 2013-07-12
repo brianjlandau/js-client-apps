@@ -2,9 +2,9 @@ define(["hbars!templates/account_info"], function(template){
   var AccountInfo = Backbone.View.extend({
     template: template,
 
-    tagName: "div",
+    tagName:   "div",
     className: "attribute-list",
-    id: "account-info",
+    id:        "account-info",
 
     initialize: function(){
       this.listenTo(this.model, 'change', this.render);

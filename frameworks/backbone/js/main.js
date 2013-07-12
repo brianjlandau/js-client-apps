@@ -3,28 +3,28 @@ requirejs.config({
 
   paths: {
     // Vendor Paths
-    bootstrap: 'vendor/bootstrap',
-    backbone: 'vendor/backbone',
-    jquery: 'vendor/jquery',
+    bootstrap:  'vendor/bootstrap',
+    backbone:   'vendor/backbone',
+    jquery:     'vendor/jquery',
     underscore: 'vendor/lodash.underscore',
     Handlebars: 'vendor/handlebars',
-    text: 'vendor/text',
-    hbars: 'vendor/hbars',
-    timeago: 'vendor/jquery.timeago',
+    text:       'vendor/text',
+    hbars:      'vendor/hbars',
+    timeago:    'vendor/jquery.timeago',
 
     // lib paths
     serialize_object: 'lib/jquery.serialize_object',
-    session: 'lib/session',
-    form_view: 'lib/form_view',
-    uri: 'lib/uri',
+    session:          'lib/session',
+    form_view:        'lib/form_view',
+    uri:              'lib/uri',
 
     // Backbone Paths
     collections: 'app/collections',
-    models: 'app/models',
-    routers: 'app/routers',
-    views: 'app/views',
-    templates: 'app/templates',
-    helpers: 'app/helpers'
+    models:      'app/models',
+    routers:     'app/routers',
+    views:       'app/views',
+    templates:   'app/templates',
+    helpers:     'app/helpers'
   },
 
   shim: {

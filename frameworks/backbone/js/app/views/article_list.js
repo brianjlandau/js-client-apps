@@ -2,7 +2,7 @@ define(["hbars!templates/article_list", "timeago"], function(template){
   var ArticleList = Backbone.View.extend({
     template: template,
 
-    tagName: "div",
+    tagName:   "div",
     className: "articles",
 
     events: {},

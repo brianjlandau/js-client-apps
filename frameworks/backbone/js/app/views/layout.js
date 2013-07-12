@@ -1,7 +1,7 @@
 define(["views/nav_bar", "views/notification_bar"], function(NavBar, NotificationBar){
   var Layout = Backbone.View.extend({
     tagName: "div",
-    id: "main",
+    id:      "main",
 
     initialize: function(){
       this.navbar = new NavBar();
