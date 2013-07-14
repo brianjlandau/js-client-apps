@@ -22,3 +22,8 @@ li.article {
 li.article small {
   margin-left: 18px;
 }
+
+.upvote-cotainer {
+  display: inline-block;
+  width: 14px;
+}

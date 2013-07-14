@@ -1,16 +1,17 @@
 {{#articles}}
-  <li class="article clearfix" data-id="{{id}}">
-    <a href="#" class="muted upvote{{^../isLoggedIn}} hide{{/../isLoggedIn}}">&#x25B2;</a>
-    <div>
-      <a href="{{url}}">{{title}}</a>
-      <span class="muted">({{host}})</span>
+  <li class="article" data-id="{{id}}">
+    <span class="upvote-cotainer">
+      <a href="#" class="muted upvote{{^../isLoggedIn}} hide{{/../isLoggedIn}}">&#x25B2;</a>
+    </span>
+    
+    <a href="{{url}}">{{title}}</a>
+    <span class="muted">({{host}})</span>
 
-      <br>
+    <br>
 
-      <small class="muted">
-        <span class="points">{{points}}</span> points |
-        posted <time class="timeago" datetime="{{created_at}}">{{created_at}}</time>
-      </small>
-    </div>
+    <small class="muted">
+      <span class="points">{{points}}</span> points |
+      posted <time class="timeago" datetime="{{created_at}}">{{created_at}}</time>
+    </small>
   </li>
 {{/articles}}
