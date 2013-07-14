@@ -1,10 +1,12 @@
 define(["models/session", "models/account"], function(ModelSession, Account){
   var Session = {
     login: function(userToken){
-      var account = new Account(), self = this;
+      var account, self = this;
       console.log("LOGGING IN");
       
       localStorage.currentUserToken = userToken;
+
+      account = new Account();
 
       account.fetch({
         success: function(model){
@@ -32,7 +34,7 @@ define(["models/session", "models/account"], function(ModelSession, Account){
       return localStorage.currentUserToken;
     },
 
-    fetchCurrentAccount: function(callback){
+    fetchCurrentAccount: function(){
       var self = this, account;
       if (!!(this.currentAccount == undefined && localStorage.currentUserToken)){
         account = new Account();
@@ -40,12 +42,10 @@ define(["models/session", "models/account"], function(ModelSession, Account){
           success: function(model){
             self.currentAccount = model;
             Backbone.trigger("current_account_set", model);
-            callback();
           }
         });
       } else {
         this.currentAccount = null;
-        callback();
       }
     },
 

@@ -8,7 +8,7 @@ define(["hbars!templates/nav_bar"], function(template){
 
     events: {
       'click a.logout':       'logout',
-      'mouseover a.username': 'dropdownAccountMenu',
+      'mouseover a.usermenu': 'dropdownAccountMenu',
       'click a#new-article':  'newArticle',
       'click a#edit-account': 'editAccount',
       'click a#sign-up':      'signUp',
@@ -38,10 +38,11 @@ define(["hbars!templates/nav_bar"], function(template){
     },
 
     dropdownAccountMenu: function(){
-      this.$("a.username").dropdown('toggle');
+      this.$("a.usermenu").dropdown('toggle');
     },
 
     listenToAccount: function(){
+      this.$('.username').text(currentSession.currentAccount.get('username'));
       this.listenTo(currentSession.currentAccount, 'change:username', this.render);
     },
 

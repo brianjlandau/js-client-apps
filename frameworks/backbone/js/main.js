@@ -72,13 +72,13 @@ require(['bootstrap', 'backbone', 'serialize_object'], function() {
       }
     });
 
-    currentSession.fetchCurrentAccount(function(){
-      window.app = new App();
+    currentSession.fetchCurrentAccount();
 
-      Backbone.history.start();
+    window.app = new App();
 
-      console.log("BOOTED");
-    });
+    Backbone.history.start();
+
+    console.log("BOOTED");
   });
 
 });
