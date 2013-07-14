@@ -10,3 +10,15 @@
 .modal form {
   margin-bottom: 0px;
 }
+
+a.upvote:hover {
+  text-decoration: none;
+}
+
+li.article {
+  margin-bottom: 7px;
+}
+
+li.article small {
+  margin-left: 18px;
+}

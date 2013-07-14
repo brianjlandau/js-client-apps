@@ -19,7 +19,7 @@ define(['uri'], function(URI){
           host: this.host()
         });;
       }
-    },
+    }
   });
 
   return Article;
