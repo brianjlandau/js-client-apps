@@ -1,7 +1,7 @@
 {{#articles}}
   <li class="article" data-id="{{id}}">
     <span class="upvote-cotainer">
-      <a href="#" class="muted upvote{{^../isLoggedIn}} hide{{/../isLoggedIn}}">&#x25B2;</a>
+      <a href="#" class="muted upvote{{hideUpvote}}">&#x25B2;</a>
     </span>
     
     <a href="{{url}}">{{title}}</a>
