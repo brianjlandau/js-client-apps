@@ -1,37 +1,37 @@
-define(["views/article_list_item", "timeago"], function(ArticleListItem){
+define(["hbars!templates/article_list", "models/vote", "timeago"], function(template, Vote){
   var ArticleList = Backbone.View.extend({
+    template: template,
+
     tagName:   "ol",
     className: "articles",
 
+    events: {
+      'click a.upvote': 'upvote'
+    },
+
     initialize: function(){
       this.render();
+
       this.listenTo(this.collection, 'add', this.render);
-      this.articleListItems = [];
+
       this.listenTo(Backbone, 'login', this.showUpvotes);
       this.listenTo(Backbone, 'logout', this.hideUpvotes);
     },
 
     render: function(){
-      this.removeListItems();
-
-      this.collection.each(function(article){
-        var listItem = new ArticleListItem({model: article});
-        
-        this.articleListItems.push(listItem);
-        this.$el.append(listItem.el);
-      }.bind(this));
+      this.$el.html( this.template({
+        articles: this.collection.toJSON(),
+        isLoggedIn: currentSession.isLoggedIn()
+      }) );
       
       this.$('time.timeago').timeago();
     },
 
-    remove: function(){
-      this.removeListItems();
-      Backbone.View.prototype.remove.apply(this, arguments);
-    },
-
-    removeListItems: function(){
-      _.each(this.articleListItems, function(listItem){ listItem.remove(); });
-      this.articleListItems = [];
+    upvote: function(e){
+      var $article = $(e.currentTarget).closest('.article'),
+          vote = new Vote({target_id: $article.data('id'), target_type: 'Article'});
+      e.preventDefault();
+      vote.save({}, {success: this.updateVoteCount.bind($article)});
     },
 
     showUpvotes: function(){
@@ -40,6 +40,11 @@ define(["views/article_list_item", "timeago"], function(ArticleListItem){
 
     hideUpvotes: function(){
       this.$("a.upvote").hide();
+    },
+
+    updateVoteCount: function(){
+      var $pointsElm = this.find('.points'), points = parseInt($pointsElm.text());
+      $pointsElm.text(points + 1);
     }
   });
 
