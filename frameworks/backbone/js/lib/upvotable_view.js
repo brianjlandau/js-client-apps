@@ -1,8 +1,8 @@
 define(['models/vote', 'helpers/hide_upvote'], function(Vote){
   var UpvotableView = {
     upvotableInitialization: function(){
-      this.listenTo(Backbone, 'login', this.render);
-      this.listenTo(Backbone, 'logout', this.hideUpvotes);
+      this.listenTo(currentSession, 'login', this.render);
+      this.listenTo(currentSession, 'logout', this.hideUpvotes);
     },
 
     upvote: function(e){

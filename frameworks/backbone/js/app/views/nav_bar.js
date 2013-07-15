@@ -18,9 +18,9 @@ define(["hbars!templates/nav_bar"], function(template){
     initialize: function(){
       this.render();
       
-      this.listenTo(Backbone, "login", this.render);
-      this.listenTo(Backbone, "logout", this.render);
-      this.listenTo(Backbone, "current_account_set", this.listenToAccount);
+      this.listenTo(currentSession, "login", this.render);
+      this.listenTo(currentSession, "logout", this.render);
+      this.listenTo(currentSession, "current_account_set", this.listenToAccount);
       
       if (currentSession.isLoggedIn()) this.listenToAccount();
     },

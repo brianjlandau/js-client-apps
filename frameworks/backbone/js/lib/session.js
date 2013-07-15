@@ -1,5 +1,7 @@
 define(["models/session", "models/account"], function(ModelSession, Account){
-  var Session = {
+  var Session = function(){ };
+
+  Session.prototype = {
     login: function(userToken){
       var account, self = this;
       console.log("LOGGING IN");
@@ -11,8 +13,8 @@ define(["models/session", "models/account"], function(ModelSession, Account){
       account.fetch({
         success: function(model){
           self.currentAccount = model;
-          Backbone.trigger("login");
-          Backbone.trigger("current_account_set", model);
+          self.trigger("login");
+          self.trigger("current_account_set", model);
         }
       });
     },
@@ -27,7 +29,7 @@ define(["models/session", "models/account"], function(ModelSession, Account){
       localStorage.removeItem("currentAccount");
       this.currentAccount = null;
 
-      Backbone.trigger("logout");
+      this.trigger("logout");
     },
 
     currentUserToken: function(){
@@ -41,7 +43,7 @@ define(["models/session", "models/account"], function(ModelSession, Account){
         account.fetch({
           success: function(model){
             self.currentAccount = model;
-            Backbone.trigger("current_account_set", model);
+            self.trigger("current_account_set", model);
           }
         });
       } else {
@@ -53,6 +55,8 @@ define(["models/session", "models/account"], function(ModelSession, Account){
       return localStorage.currentUserToken ? true : false;
     }
   };
+
+  _.extend(Session.prototype, Backbone.Events);
 
   return Session;
 });

@@ -63,7 +63,7 @@ requirejs.config({
 require(['bootstrap', 'backbone', 'serialize_object'], function() {
 
   require(['session', 'routers/app', 'collections/articles'], function(Session, App, Articles){
-    window.currentSession = Session;
+    window.currentSession = new Session;
 
     window.articles = new Articles;
     articles.fetch();
