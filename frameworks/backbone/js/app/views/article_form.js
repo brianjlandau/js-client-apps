@@ -6,6 +6,7 @@ define(["form_view", "hbars!templates/article_form"], function(FormView, templat
 
     success: function(model, xhr, option){
       articles.add(model);
+      currentSession.currentAccount.favoriteIds.push(model.id);
       this.closeAndNotifyOfSuccess("Your article has been saved.");
     }
   });

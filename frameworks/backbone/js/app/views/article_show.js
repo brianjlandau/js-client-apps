@@ -56,6 +56,10 @@ define([
 
     newComment: function(){
       return new Comment({parent_id: this.model.id, parent_type: 'Article'})
+    },
+
+    getUpvoteable: function(){
+      return this.model;
     }
   });
 

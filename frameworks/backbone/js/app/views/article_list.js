@@ -24,6 +24,10 @@ define(["hbars!templates/article_list", "upvotable_view", "views/article", "time
       }) );
       
       this.$('time.timeago').timeago();
+    },
+
+    getUpvoteable: function(type, id){
+      return this.collection.get(id);
     }
   });
 
