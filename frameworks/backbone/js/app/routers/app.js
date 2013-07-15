@@ -1,8 +1,9 @@
 define(function(){
   var App = Backbone.Router.extend({
     routes: {
-      "":        'articleList',
-      "account": "showAccountInfo"
+      "":            "articleList",
+      "account":     "showAccountInfo",
+      "articles/:id": "showArticle"
     },
 
     renderLayout: function(callback){
@@ -14,13 +15,24 @@ define(function(){
       } else {
         callback();
       }
+    },
+
+    showArticle: function(id){
+      this.renderLayout(function(){
+        require(["views/article_show"], function(ArticleShow){
+          console.log("ARTICLES SHOW");
+          var article = articles.get(id),
+              articleShow = new ArticleShow({model: article});
+          this.layout.setContent(articleShow);
+        }.bind(this));
+      }.bind(this));
     }
   });
 
   var actions = [
     {
       name: "articleList",
-      requirements: ["views/article_list", "collections/articles"],
+      requirements: ["views/article_list"],
       action: function(ArticleList, Articles){
         console.log("ARTICLES LIST");
         var articleList = new ArticleList({collection: articles});

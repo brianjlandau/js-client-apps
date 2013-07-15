@@ -1,17 +1,5 @@
 {{#articles}}
-  <li class="article" data-id="{{id}}">
-    <span class="upvote-cotainer">
-      <a href="#" class="muted upvote{{hideUpvote}}">&#x25B2;</a>
-    </span>
-    
-    <a href="{{url}}">{{title}}</a>
-    <span class="muted">({{host}})</span>
-
-    <br>
-
-    <small class="muted">
-      <span class="points">{{points}}</span> points |
-      posted <time class="timeago" datetime="{{created_at}}">{{created_at}}</time>
-    </small>
+  <li class="article upvotable" data-id="{{id}}" data-type="Article">
+    {{> article}}
   </li>
 {{/articles}}

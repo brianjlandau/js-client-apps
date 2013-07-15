@@ -1,18 +1,13 @@
-define(['helpers/input_helper'], function(){
+define(['form_with_errors'], function(FormWithErrors){
   var FormView = Backbone.View.extend({
     tagName: "div",
 
     className: "modal",
 
-    events: {
-      "submit form": "submit"
-    },
-
-    saveOptions: {},
-
     initialize: function(){
       this.render();
-      this.listenTo(this.model, "error", this.handleErrors);
+      this.formModel = this.model;
+      this.formWithErrorsInitialize();
       this.$el.on('hidden', function () {
         this.remove();
       }.bind(this))
@@ -30,41 +25,8 @@ define(['helpers/input_helper'], function(){
       }
     },
 
-    submit: function(e){
-      e.preventDefault();
-      this.model.save(this.$('form').serializeObject(), _.extend(this.saveOptions, {
-        success: _.bind(this.success, this)
-      }));
-    },
-
-    handleErrors: function(model, xhr, options){
-      var allErrors = JSON.parse(xhr.responseText).errors.keyed;
-
-      this.clearErrors();
-      this.addGenralErrors(allErrors);
-      this.addErrorsToFields(allErrors);
-    },
-
-    clearErrors: function(){
-      this.$('.control-group').removeClass('error');
-      this.$('.help-inline').remove();
-      this.$('.alert').remove();
-    },
-
-    addGenralErrors: function(allErrors){
-      if (allErrors.general){
-        this.$('form').prepend("<p class='alert alert-error'>"+allErrors.general.join(', ')+"</p>");
-      }
-    },
-
-    addErrorsToFields: function(allErrors){
-      var $el = this.$el, idNameBase = this.idNameBase;
-
-      _.each(allErrors, function(errors, attr){
-        var $input = $el.find("#"+idNameBase+"-"+attr);
-        $input.closest(".control-group").addClass('error');
-        $input.closest('.controls').append("<span class='help-inline'>"+errors.join(', ')+"</span>");
-      });
+    renderGeneralErrors: function(generalErrors){
+      this.$('fieldset.modal-body').prepend("<p class='alert alert-error'>"+generalErrors+"</p>");
     },
 
     closeAndNotifyOfSuccess: function(text){
@@ -73,6 +35,8 @@ define(['helpers/input_helper'], function(){
       this.remove();
     }
   });
+
+  FormView = FormView.extend(FormWithErrors);
 
   return FormView;
 });

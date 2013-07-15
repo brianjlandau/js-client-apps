@@ -19,11 +19,24 @@ li.article {
   margin-bottom: 7px;
 }
 
-li.article small {
+.article small {
   margin-left: 18px;
+}
+
+.article small a {
+  color: #999;
 }
 
 .upvote-cotainer {
   display: inline-block;
   width: 14px;
 }
+
+form#comment-form {
+  margin: 30px 0px;
+}
+
+textarea#comment-body {
+  width: 500px;
+}
+

@@ -16,7 +16,9 @@ requirejs.config({
     serialize_object: 'lib/jquery.serialize_object',
     session:          'lib/session',
     form_view:        'lib/form_view',
+    form_with_errors: 'lib/form_with_errors',
     uri:              'lib/uri',
+    upvotable_view:   'lib/upvotable_view',
 
     // Backbone Paths
     collections: 'app/collections',
