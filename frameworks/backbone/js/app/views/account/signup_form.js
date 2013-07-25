@@ -1,4 +1,4 @@
-define(["form_view", "models/session", "hbars!templates/signup_form"], function(FormView, ModelSession, template){
+define(["form_view", "models/session", "hbars!templates/account/signup_form"], function(FormView, ModelSession, template){
   var SignupForm = FormView.extend({
     template: template,
 

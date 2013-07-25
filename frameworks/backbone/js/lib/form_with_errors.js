@@ -18,7 +18,7 @@ define(['helpers/input_helper'], function(){
     },
 
     handleErrors: function(model, xhr, options){
-      var allErrors = JSON.parse(xhr.responseText).errors.keyed;
+      var allErrors = xhr.responseJSON.errors.keyed;
 
       this.clearErrors();
       this.addGenralErrors(allErrors);

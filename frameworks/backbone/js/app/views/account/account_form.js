@@ -1,4 +1,4 @@
-define(["form_view", "hbars!templates/account_form"], function(FormView, template){
+define(["form_view", "hbars!templates/account/account_form"], function(FormView, template){
   var AccountForm = FormView.extend({
     template: template,
 

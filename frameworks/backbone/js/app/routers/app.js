@@ -19,7 +19,7 @@ define(function(){
 
     showArticle: function(id){
       this.renderLayout(function(){
-        require(["views/article_show"], function(ArticleShow){
+        require(["views/articles/article_show"], function(ArticleShow){
           console.log("ARTICLES SHOW");
           var article = articles.get(id),
               articleShow = new ArticleShow({model: article});
@@ -32,7 +32,7 @@ define(function(){
   var actions = [
     {
       name: "articleList",
-      requirements: ["views/article_list"],
+      requirements: ["views/articles/article_list"],
       action: function(ArticleList, Articles){
         console.log("ARTICLES LIST");
         var articleList = new ArticleList({collection: articles});
@@ -41,7 +41,7 @@ define(function(){
     },
     {
       name: "showAccountInfo",
-      requirements: ["views/account_info"], 
+      requirements: ["views/account/account_info"], 
       action: function(AccountInfoView){
         console.log("ACCOUNT INFO");
         var account = currentSession.currentAccount,

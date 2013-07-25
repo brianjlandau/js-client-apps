@@ -1,9 +1,9 @@
 define([
-  "hbars!templates/article_show",
+  "hbars!templates/articles/article_show",
   "models/comment",
   "upvotable_view",
   "form_with_errors",
-  "views/article",
+  "views/articles/article",
   "timeago"
 ], function(template, Comment, UpvotableView, FormWithErrors){
 

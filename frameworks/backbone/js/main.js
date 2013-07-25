@@ -70,7 +70,7 @@ require(['bootstrap', 'backbone', 'serialize_object'], function() {
 
     $.ajaxPrefilter(function( options, originalOptions, xhr ){
       if (currentSession.isLoggedIn()){
-        options.headers = {'X-User-Token': currentSession.currentUserToken()};
+        xhr.setRequestHeader('X-User-Token', currentSession.currentUserToken());
       }
     });
 

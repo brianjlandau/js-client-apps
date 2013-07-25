@@ -48,7 +48,7 @@ define(["hbars!templates/nav_bar"], function(template){
 
     newArticle: function(e){
       e.preventDefault();
-      require(["models/article","views/article_form"], function(Article, ArticleForm){
+      require(["models/article","views/articles/article_form"], function(Article, ArticleForm){
         var article = new Article,
             articleForm = new ArticleForm({model: article});
       });
@@ -56,7 +56,7 @@ define(["hbars!templates/nav_bar"], function(template){
 
     editAccount: function(e){
       e.preventDefault();
-      require(["views/account_form"], function(AccountForm){
+      require(["views/account/account_form"], function(AccountForm){
         var account = currentSession.currentAccount,
             accountForm = new AccountForm({model: account});
       });
@@ -64,7 +64,7 @@ define(["hbars!templates/nav_bar"], function(template){
 
     signUp: function(e){
       e.preventDefault();
-      require(["views/signup_form", "models/user"], function(UserForm, User){
+      require(["views/account/signup_form", "models/user"], function(UserForm, User){
         var user = new User,
             userForm = new UserForm({model: user});
       });
@@ -72,7 +72,7 @@ define(["hbars!templates/nav_bar"], function(template){
 
     login: function(e){
       e.preventDefault();
-      require(["views/login_form", "models/session"], function(LoginForm, Session){
+      require(["views/account/login_form", "models/session"], function(LoginForm, Session){
         var session = new Session,
             loginForm = new LoginForm({model: session});
       });

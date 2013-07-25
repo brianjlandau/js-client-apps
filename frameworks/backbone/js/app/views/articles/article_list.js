@@ -1,4 +1,4 @@
-define(["hbars!templates/article_list", "upvotable_view", "views/article", "timeago"], function(template, UpvotableView){
+define(["hbars!templates/articles/article_list", "upvotable_view", "views/articles/article", "timeago"], function(template, UpvotableView){
   var ArticleList = Backbone.View.extend({
     template: template,
 

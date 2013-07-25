@@ -1,4 +1,4 @@
-define(["form_view", "hbars!templates/login_form"], function(FormView, template){
+define(["form_view", "hbars!templates/account/login_form"], function(FormView, template){
   var LoginForm = FormView.extend({
     template: template,
 

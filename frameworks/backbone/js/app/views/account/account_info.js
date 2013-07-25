@@ -1,4 +1,4 @@
-define(["hbars!templates/account_info"], function(template){
+define(["hbars!templates/account/account_info"], function(template){
   var AccountInfo = Backbone.View.extend({
     template: template,
 
